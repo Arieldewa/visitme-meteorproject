@@ -1,0 +1,77 @@
+<template name="detailwisata">
+{{> header}}
+	{{> Template.dynamic template=wisata}}
+	
+</template>
+<template name="komentar">
+<div class="container" style="background: #fff;">
+	<div class="row">
+	<div class="comments-container" style="margin-top: 0px;">
+		<div class="widget-area no-padding blank">
+			<div class="status-upload">
+	{{#if currentUser}}
+				<form class="komentar">
+					<input type="text" name="komentar" placeholder="Berikan Sebuah Komentar ?" >					
+					<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+				</form>
+	{{else}}
+		<a href="/wisata" class="comments-container btn btn-default add col-md-10" style="float: left">Anda Blum Login</a>
+	{{/if}}
+			</div><!-- Status Upload  -->
+		</div><!-- Widget Area -->
+	</div>
+	</div>
+	{{> komentarlist}}
+	</div>
+</template>
+<template name="komentarlist">
+
+	<div class="row">
+    <div class="comments-container" >	
+		<ul id="comments-list" class="comments-list">
+	{{#each komentarlist}}
+			<li>
+				<div class="comment-main-level">					
+					<div class="comment-box">
+						<div class="comment-head">
+							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">{{user}}</a></h6>						
+						</div>
+						<div class="comment-content">
+							{{komentar}}
+						</div>
+					</div>
+				</div>				
+			</li>			
+	{{/each}}
+		</ul>
+	</div>
+	</div>
+		
+</template>
+<template name="wisatadetail">
+<div class="container" style="background: #fff;">
+        <div class="row">
+	{{#each wisatadetail}}
+            <div class="comments-container" style="margin: 100px auto 15px;">
+                <h2>{{wisata}}</h2>
+                <p class="lead">
+                    by <a href="#">Author *</a>
+                </p>
+                <hr>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM *</p>
+                <hr>                
+                <img class="img-responsive" src="{{img}}" alt="">
+                <hr>
+                <p class="lead">{{alamat}}</p>
+                <p>{{deskripsi}}</p>                
+				<hr>
+			</div>
+	{{/each}}
+			</div>
+	</div>	
+	
+	{{> komentar}}	
+	
+	
+</template>
+

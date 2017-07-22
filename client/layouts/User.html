@@ -1,0 +1,17 @@
+<template name="listuser">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>name</th>
+			</tr>
+		</thead>
+		<tbody>
+		{{#each listuser}}
+			<tr>
+				<td>{{email}}</td>
+			</tr>
+		{{/each}}
+
+		</tbody>
+	</table>
+</template>

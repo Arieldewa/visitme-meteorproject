@@ -1,0 +1,105 @@
+<head>
+	<title>visitme</title>
+</head>
+<body>
+  
+	{{> MainLayout}}	
+  
+</body>
+
+<template name="MainLayout">
+
+	{{> Template.dynamic template=main}}
+</template>
+
+<template name="coba">
+	<h1>coba</h1>
+</template>
+
+<template name="home">
+		{{> swiper}}
+		{{> recomcity}}	
+    {{> footer}}
+</template>
+
+<template name="swiper">
+  <!-- Swiper -->
+  <div style="height: 100%;">	
+  <div id="header-swipe">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {{#each swiper}}                  
+            <div class="swiper-slide bg" style="background: url({{img_src}});-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+              <h1>{{quote}}</h1>
+            </div>                    
+            {{/each}}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+        <div class="swiper-button-next swiper-button-white"></div>
+    </div>
+  </div>
+  </div>
+</template>
+
+<template name="recomcity">
+  <div class="container text-center" style="padding: 50px 0;">
+      <div class="row">
+        {{#each recomcity}}
+            <div class="col-md-4 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="{{img}}" alt="">
+                    <div class="caption">
+                        <a href="/detailwisata/{{this._id}}"><h3>{{wisata}}</h3></a>                        
+                        <!-- <p>
+                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                        </p> -->
+                    </div>
+                </div>
+            </div>
+          {{/each}}
+      </div>      
+      <div class="row">
+        <a href="/wisata" class="btn btn-dark">View More Items</a>
+        </div>
+  </div>  
+</template>
+
+<template name="footer">
+  <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</template>

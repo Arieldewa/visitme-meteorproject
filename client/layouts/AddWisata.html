@@ -1,0 +1,98 @@
+<template name='pagewisata'>
+	{{> header}}	
+	<div class="container text-center" style="padding: 50px 0;margin-top: 20px ">	
+	{{> Template.dynamic template=mainwisata}}	
+	</div>
+</template>
+<template name="tambahwisata">
+	{{#if currentUser}}
+	<div class="row">
+	<div class="col-md-12">
+    <div class="form-area" id="form-update">  
+        <form role="form" id="tambah" class="tambah">
+        <br style="clear:both">
+                    <h3 style="margin-bottom: 25px; text-align: center;">Form Wisata</h3>
+    				<div class="form-group">
+						<input type="text" class="form-control"  name="wisata" placeholder="Nama Wisata" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control"  name="wisataalamat" placeholder="alamat" required>
+					</div>
+					<div class="form-group">
+					<textarea class="form-control" type="textarea" name="wisatadeskripsi" placeholder="Deskripsi" maxlength="140" rows="7"></textarea>
+                        <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                    
+                    </div>
+					<div class="form-group">
+						<input type="text" class="form-control"  name="imagewisata" placeholder="Url Image" required>
+					</div>                    
+                                                                          
+        	<button type="submit"  name="submit" class="btn btn-primary pull-right ">Submit Form</button>
+	        </form>
+	    </div>
+	</div>
+	</div>
+	{{else}}
+		<div class="row" style="margin: 10px;">		
+			<a href="/wisata" class="btn btn-default add col-md-12" style="float: left">Anda Blum Login , kembali saja</a>
+		</div>
+	{{/if}}	
+</template>
+
+<template name="datawisata">
+{{#if currentUser}}
+<div class="row" style="margin: 10px;">		
+	<a href="/wisata/tambah" class="btn btn-default add " style="float: left">add</a>
+</div>
+{{/if}}
+	      <div class="row">
+	        {{#each datawisata}}
+	            <div class="col-md-3 col-sm-6 hero-feature">
+	                <div class="thumbnail">
+	                    <img src="{{img}}" alt="">
+	                    <div class="caption">
+	                        <a href="/detailwisata/{{this._id}}"><h5 style="text-transform: uppercase;">{{wisata}}</h5></a>                        
+	                        <!-- <p>
+	                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+	                        </p> -->
+	                        {{#if currentUser}}
+							<a  class="hapus btn btn-danger btn-secondary">Hapus</a>
+							<a class="update btn btn-info btn-secondary" href="/wisata/{{this._id}}">update</a>
+							{{/if}}
+	                    </div>
+	                </div>
+	            </div>
+	          {{/each}}	           
+	      </div>      	
+	
+</template>
+
+<template name="updatewisata">
+	{{#if currentUser}}
+	<div class="row">
+	<div class="col-md-12">
+    <div class="form-area">  
+        <form role="form" id="tambah" class="tambah">
+        <br style="clear:both">
+                    <h3 style="margin-bottom: 25px; text-align: center;">Update Wisata</h3>
+                    {{#each updatewisata}}
+    				<div class="form-group">
+						<input type="text" class="form-control"  name="wisata" placeholder="Nama Wisata" value="{{wisata}}" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control"  name="wisataalamat" placeholder="alamat" value="{{alamat}}" required>
+					</div>
+					<div class="form-group">
+					<textarea class="form-control" type="textarea" name="wisatadeskripsi"  placeholder="Deskripsi" maxlength="140" rows="7">{{deskripsi}}</textarea>
+                        <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                    
+                    </div>
+					<div class="form-group">
+						<input type="text" class="form-control"  name="imagewisata" value="{{img}}" placeholder="Url Image" required>
+					</div>                    
+				{{/each}}                                  
+        	<button type="submit"  name="submit" class="btn btn-primary pull-right">Submit Form</button>
+	        </form>
+	    </div>
+	</div>
+	</div>	
+	{{/if}}	
+</template>
